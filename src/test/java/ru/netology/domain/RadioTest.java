@@ -9,13 +9,14 @@ import static org.junit.jupiter.api.Assertions.*;
 class RadioTest {
 
     @Test
-    public void shouldUseConstructor(){
+    public void shouldUseConstructor() {
         Radio radio = new Radio(15);
         assertEquals(15, radio.getCountRadioBox());
 
     }
+
     @Test
-    public void shouldCountTenRadBox(){
+    public void shouldCountTenRadBox() {
         Radio radio = new Radio();
         assertEquals(10, 10);
     }
