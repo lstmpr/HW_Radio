@@ -8,25 +8,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class RadioTest {
 
-    @Test
-    public void shouldUseConstructor() {
-        Radio radio = new Radio(15);
-        assertEquals(15, radio.getCountRadioBox());
-
-    }
-
-    @Test
-    public void shouldCountTenRadBox() {
-        Radio radio = new Radio();
-        assertEquals(10, 10);
-    }
-
     @ParameterizedTest
     @CsvSource(value = {"'CurrentRadBox equal nine ', 9, 9",
-            "'CurrentRadBox more than nine', 10, 4",
+            "'CurrentRadBox more than nine', 10, 0",
             "'CurrentRadBox between zero and nine', 4, 4",
             "'CurrentRadBox equal zero', 0, 0",
-            "'CurrentRadBox less than zero', -1, 4"
+            "'CurrentRadBox less than zero', -1, 0"
     })
     void currentRadio(String testName, int setCurrentRadBox, int expected) {
         Radio rad = new Radio();
@@ -43,7 +30,7 @@ class RadioTest {
             "'CurrentRadBox  equal zero', 0, 1"
     })
     void nextRadStat(String testName, int setCurrentRadBox, int expected) {
-        Radio rad = new Radio(25);
+        Radio rad = new Radio();
         rad.setCurrentRadBox(setCurrentRadBox);
         rad.nextRadStat();
 
@@ -68,15 +55,15 @@ class RadioTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"'CurrentRadVolume equal hundred ', 100, 100",
-            "'CurrentRadVolume more than hundred', 101, 100",
-            "'CurrentRadVolume between zero and hundred', 60, 60",
+    @CsvSource(value = {"'CurrentRadVolume equal ten ', 10, 10",
+            "'CurrentRadVolume more than ten', 11, 10",
+            "'CurrentRadVolume between zero and ten', 4, 4",
             "'CurrentRadVolume equal zero', 0, 0",
             "'CurrentRadVolume less than zero', -1, 0"
     })
-    void radVolume(String testName, int setCurrentRadVolume, int expected) {
+    void radVolume(String testName, int setCurrentRadBox, int expected) {
         Radio rad = new Radio();
-        rad.setCurrentRadVolume(setCurrentRadVolume);
+        rad.setCurrentRadVolume(setCurrentRadBox);
 
         int actual = rad.getCurrentRadVolume();
 
@@ -84,14 +71,14 @@ class RadioTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"'CurrentRadVolume equal hundred ', 100, 100",
-            "'CurrentRadVolume more than hundred', 101, 100",
-            "'CurrentRadVolume between zero and hundred', 55, 56",
+    @CsvSource(value = {"'CurrentRadVolume equal ten ', 10, 10",
+            "'CurrentRadVolume more than ten', 11, 10",
+            "'CurrentRadVolume between zero and ten', 7, 8",
             "'CurrentRadVolume equal zero', 0, 1"
     })
-    void plusVolume(String testName, int currentRadVolume, int expected) {
+    void plusVolume(String testName, int setCurrentRadBox, int expected) {
         Radio rad = new Radio();
-        rad.setCurrentRadVolume(currentRadVolume);
+        rad.setCurrentRadVolume(setCurrentRadBox);
         rad.plusVolume();
 
         int actual = rad.getCurrentRadVolume();
@@ -100,14 +87,14 @@ class RadioTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"'CurrentRadVolume equal hundred ', 100, 99",
-            "'CurrentRadVolume between zero and hundred', 50, 49",
+    @CsvSource(value = {"'CurrentRadVolume equal ten ', 10, 9",
+            "'CurrentRadVolume between zero and ten', 5, 4",
             "'CurrentRadVolume equal zero', 0, 0",
             "'CurrentRadVolume less than zero', -1, 0"
     })
-    void minusVolume(String testName, int setCurrentRadVolume, int expected) {
+    void minusVolume(String testName, int setCurrentRadBox, int expected) {
         Radio rad = new Radio();
-        rad.setCurrentRadVolume(setCurrentRadVolume);
+        rad.setCurrentRadVolume(setCurrentRadBox);
         rad.minusRadVolume();
 
         int actual = rad.getCurrentRadVolume();
