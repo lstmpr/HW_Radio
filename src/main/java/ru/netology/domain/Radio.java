@@ -64,10 +64,7 @@ public class Radio {
             currentRadBox = currentRadBox - 1;
         }
     }
-
-
-    //---------------------------------------
-
+    
 
     public int getCurrentRadVolume() {
         return currentRadVolume;
