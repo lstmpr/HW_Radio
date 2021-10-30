@@ -11,14 +11,19 @@ class RadioTest {
     @Test
     public void shouldUseConstructor() {
         Radio radio = new Radio(15);
-        assertEquals(15, radio.getCountRadioBox());
+        int actual = radio.getCountRadioBox();
+        int expected = 15;
+        assertEquals(actual, expected);
 
     }
 
     @Test
-    public void shouldCountTenRadBox() {
-        Radio radio = new Radio();
-        assertEquals(10, 10);
+    public void shouldUseConstructorForChangeRadBoxFrom20To15() {
+        Radio radio = new Radio(20);
+        radio.setCurrentRadBox(15);
+        int actual = radio.getCurrentRadBox();
+        int expected = 15;
+        assertEquals(actual, expected);
     }
 
     @ParameterizedTest
@@ -43,7 +48,7 @@ class RadioTest {
             "'CurrentRadBox  equal zero', 0, 1"
     })
     void nextRadStat(String testName, int setCurrentRadBox, int expected) {
-        Radio rad = new Radio(25);
+        Radio rad = new Radio();
         rad.setCurrentRadBox(setCurrentRadBox);
         rad.nextRadStat();
 
@@ -114,4 +119,6 @@ class RadioTest {
 
         assertEquals(expected, actual);
     }
+
+
 }

@@ -12,10 +12,15 @@ public class Radio {
 
     public Radio(int countRadioBox) {
         this.countRadioBox = countRadioBox;
+        this.maxRadBox = calculateMaxRadBox();
+        this.currentRadBox = calculateCurrentRadBox();
     }
 
+
     public Radio() {
+        calculateMaxRadBox();
     }
+
 
     public int calculateMaxRadBox() {
         return (countRadioBox - 1);
